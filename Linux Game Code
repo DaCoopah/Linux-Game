@@ -2,26 +2,40 @@ import random
 
 # This is our starting money
 STARTING_MONEY = 100
+    
 
 def mine(money):
-    
-def wood(money):
-    
+    print("1: Mine Ore")
+    print("2: Go back")
+    mine_input = input("input: ")
+    if mine_input == "1":
+        print("Would you like to mine some ore? [y/n]: ")
+    if mine_input == "y":
+        print("test")
 
-# def makemoney(money):
-#    print("Welcome! There are many ways to make money, which one would you like to try?")
-#    print("1: Chop wood")
-#    print("2: Mine Ore")
-#    print("3: Back to menu")
-#    makemoney_input = input("input: ")
-#    if makemoney_input == 1
-#
-#    elif makemoney_input == 2
-#    
-#    elif makemoney_input == 3
-#    return
-#    else
-#    print("Wrong command, try again with a number 1-3!")
+def wood(money):
+    print("1: Chop Wood")
+    print("2: Go back")
+    wood_input = input("input: ")
+    if wood_input == "1":
+        print("Would you like to chop some wood? [y/n]: ")   
+    if wood_input == "y":
+        print("test")
+
+def makemoney(money):
+    print("Welcome! There are many ways to make money, which one would you like to try?")
+    print("1: Chop Wood")
+    print("2: Mine Ore")
+    print("3: Back to menu")
+    make_money_input = input("input: ")
+    if make_money_input == "1":
+	    wood(money)
+    elif make_money_input == "2":
+        mine(money)
+    elif make_money_input == "3":
+        return
+    else:
+        print("Wrong command, try again with a number 1-3!")
 
 def gamble(money):
     gamble_result = random.randrange(1, 3)
@@ -68,11 +82,11 @@ def menu(money):
     print("4: Quit")
     menu_input = input("input: ")
     if menu_input == "1":
-        money = gamble(money)
-    elif menu_input == "2":
-        print(f"Account Balance: {money}")
-    elif menu_input == "3":
         money = makemoney(money)
+    elif menu_input == "2":
+        money = gamble(money)
+    elif menu_input == "3":
+        print(f"Account Balance: {money}")
     elif menu_input == "4":
         return
 
