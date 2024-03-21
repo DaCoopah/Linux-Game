@@ -21,7 +21,13 @@ def wood(money):
     if wood_input == "1":
         print("Would you like to chop some wood? [y/n]: ")   
     if wood_input == "y":
-        print("test")
+        money = money + 1
+    print("Nice! You earned $1. Do you want to chop more wood? [y/n]: ")
+    again_input = input("input: ")
+    if again_input == "y":
+        wood(money)
+    if again_input == "n":
+        return money
     return money
 
 def makemoney(money):
@@ -31,13 +37,14 @@ def makemoney(money):
     print("3: Back to menu")
     make_money_input = input("input: ")
     if make_money_input == "1":
-	    wood(money)
+         wood(money)
     elif make_money_input == "2":
         mine(money)
     elif make_money_input == "3":
-        return
+        return money
     else:
         print("Wrong command, try again with a number 1-3!")
+
     return money
 
 def gamble(money):
