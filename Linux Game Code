@@ -12,6 +12,7 @@ def mine(money):
         print("Would you like to mine some ore? [y/n]: ")
     if mine_input == "y":
         print("test")
+    return money
 
 def wood(money):
     print("1: Chop Wood")
@@ -21,6 +22,7 @@ def wood(money):
         print("Would you like to chop some wood? [y/n]: ")   
     if wood_input == "y":
         print("test")
+    return money
 
 def makemoney(money):
     print("Welcome! There are many ways to make money, which one would you like to try?")
@@ -36,6 +38,7 @@ def makemoney(money):
         return
     else:
         print("Wrong command, try again with a number 1-3!")
+    return money
 
 def gamble(money):
     gamble_result = random.randrange(1, 3)
