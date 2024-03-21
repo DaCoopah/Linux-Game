@@ -3,6 +3,25 @@ import random
 # This is our starting money
 STARTING_MONEY = 100
 
+def mine(money):
+    
+def wood(money):
+    
+
+def makemoney(money):
+    print("Welcome! There are many ways to make money, which one would you like to try?")
+    print("1: Chop wood")
+    print("2: Mine Ore")
+    print("3: Back to menu")
+    makemoney_input = input("input: ")
+    if makemoney_input == 1
+
+    elif makemoney_input == 2
+    
+    elif makemoney_input == 3
+    return
+    else
+    print("Wrong command, try again with a number 1-3!")
 
 def gamble(money):
     gamble_result = random.randrange(1, 3)
@@ -43,18 +62,22 @@ def menu(money):
     :return:
     """
     print("Welcome! What would you like to do?")
-    print("1: Gamble")
-    print("2: Check Balance")
-    print("3: Quit")
+    print("1: Make Money")
+    print("2: Gamble")
+    print("3: Check Balance")
+    print("4: Quit")
     menu_input = input("input: ")
     if menu_input == "1":
         money = gamble(money)
     elif menu_input == "2":
         print(f"Account Balance: {money}")
     elif menu_input == "3":
+        money = makemoney(money)
+    elif menu_input == "4":
         return
+
     else:
-        print("Enter an input between 1-3 you stupid loser")
+        print("Enter an input between 1-4 pls")
     if money == 0:
         return
     menu(money)
