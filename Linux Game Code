@@ -8,20 +8,20 @@ def mine(money):
 def wood(money):
     
 
-def makemoney(money):
-    print("Welcome! There are many ways to make money, which one would you like to try?")
-    print("1: Chop wood")
-    print("2: Mine Ore")
-    print("3: Back to menu")
-    makemoney_input = input("input: ")
-    if makemoney_input == 1
-
-    elif makemoney_input == 2
-    
-    elif makemoney_input == 3
-    return
-    else
-    print("Wrong command, try again with a number 1-3!")
+# def makemoney(money):
+#    print("Welcome! There are many ways to make money, which one would you like to try?")
+#    print("1: Chop wood")
+#    print("2: Mine Ore")
+#    print("3: Back to menu")
+#    makemoney_input = input("input: ")
+#    if makemoney_input == 1
+#
+#    elif makemoney_input == 2
+#    
+#    elif makemoney_input == 3
+#    return
+#    else
+#    print("Wrong command, try again with a number 1-3!")
 
 def gamble(money):
     gamble_result = random.randrange(1, 3)
