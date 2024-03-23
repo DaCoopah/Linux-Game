@@ -3,80 +3,81 @@ import random
 # This is our starting money
 STARTING_MONEY = 100
     
+def is_number(text):
+# Basically you take the input and you try to see if it's a number. ya feeell me.
+    try:
+        number = int(text)
+        return True
+# if you run into an error, while trying the number. This little code over here is gonna be like "oh no" and say it's false. It'll catch the error.
+    except ValueError:
+        return False
 
-def mine(money):
-    print("1: Mine Ore")
-    print("2: Go back")
-    mine_input = input("input: ")
-    if mine_input == "1":
-        print("Would you like to mine some ore? [y/n]: ")
-    if mine_input == "y":
-        print("test")
-    return money
 
 def wood(money):
-    print("1: Chop Wood")
-    print("2: Go back")
-    wood_input = input("input: ")
-    if wood_input == "1":
-        print("Would you like to chop some wood? [y/n]: ")   
-    if wood_input == "y":
-        money = money + 1
-    print("Nice! You earned $1. Do you want to chop more wood? [y/n]: ")
-    again_input = input("input: ")
+    money = money + 1
+    print(f"\n\033[97mNice! You earned\033[0m \033[92m$1\033[0m\033[97m, you now have\033[0m \033[92m${money}\033[0m\033[97m. Do you want to chop more wood? [\033[0m\033[92my\033[0m\033[97m/\033[0m\033[91mn\033[0m\033[97m]\033[0m: ")
+    again_input = input("\033[97minput: \033[0m")
     if again_input == "y":
-        wood(money)
+        money = wood(money)
     if again_input == "n":
         return money
     return money
 
 def makemoney(money):
-    print("Welcome! There are many ways to make money, which one would you like to try?")
-    print("1: Chop Wood")
-    print("2: Mine Ore")
-    print("3: Back to menu")
-    make_money_input = input("input: ")
+    print("\n\033[97mWelcome! How would you like to make money?\033[0m")
+    print("\033[92m1:\033[0m \033[97mChop Wood\033[0m")
+    print("\033[92m2:\033[0m \033[97mBack to menu\033[0m")
+    make_money_input = input("\033[97minput: \033[0m")
     if make_money_input == "1":
-         wood(money)
+        money = wood(money)
     elif make_money_input == "2":
-        mine(money)
-    elif make_money_input == "3":
         return money
     else:
-        print("Wrong command, try again with a number 1-3!")
+        print("\033[91mWrong command, try again with a number 1-2!\033[0m")
+        makemoney(money)
 
     return money
 
 def gamble(money):
     gamble_result = random.randrange(1, 3)
-    gamble_input = int(input("How much money do you want to gamble?: "))
-    if gamble_input > money:
-        print("Too broke! Try again")
-    elif gamble_input < 0:
-        print("Too broke! Try again")
+    gamble_input = input("\033[97mHow much money do you want to gamble?: \033[0m")
+    if is_number(gamble_input):
+        gamble_input = int(gamble_input)
     else:
+        print("\033[91mThis needs to be a number!\033[0m")
+        money = gamble(money)
+        return money
+
+    if gamble_input > money:
+        print("\033[91mToo broke! Try again\033[0m")
+    elif gamble_input < 0:
+        print("\033[91mToo broke! Try again\033[0m")
+    else:
+        if gamble_input:
+            if isinstance(gamble_input, str):
+                print("\033[91mPlease enter a number!\033[0m")
         # Time to gamble!
         if gamble_result == 1:
             money += gamble_input
-            print(f"You won! Money equals: {money}")
+            print(f"\033[92mYou won! Money equals:\033[0m \033[92m{money}\033[0m")
 
         if gamble_result == 2:
             money -= gamble_input
             if money > 0:
-                print(f"You lost :( Money equals: {money}")
+                print(f"\033[91mYou lost :( Money equals:\033[0m \033[92m{money}\033[0m")
 
         if money == 0:
             print(f"You're Broke! Money equals: {money}")
             user_input = input("Do you want to restart? [y/n]: ")
             if user_input == "y":
                 money = 100
-                print("Okay, but take a break man! Linda hasn't seen you in days!")
+                print("\nOkay, but take a break man! Linda hasn't seen you in days!")
             if user_input == "n":
                 "Ok, thanks for playing!"
         else:
-            user_input = input("Do you want to gamble again? [y/n]: ")
+            user_input = input("\033[97mDo you want to gamble again? [y/n]: \033[0m")
             if user_input == "y":
-                gamble(money)
+                money = gamble(money)
     return money
 
 
@@ -85,23 +86,23 @@ def menu(money):
     :param int money:
     :return:
     """
-    print("Welcome! What would you like to do?")
-    print("1: Make Money")
-    print("2: Gamble")
-    print("3: Check Balance")
-    print("4: Quit")
-    menu_input = input("input: ")
+    print("\033[97mWelcome! What would you like to do?\033[0m")
+    print("\033[92m1:\033[0m \033[97mMake Money\033[0m")
+    print("\033[92m2:\033[0m \033[97mGamble\033[0m")
+    print("\033[92m3:\033[0m \033[97mCheck Balance\033[0m")
+    print("\033[92m4:\033[0m \033[97mQuit\033[0m")
+    menu_input = input("\033[97minput: \033[0m")
     if menu_input == "1":
         money = makemoney(money)
     elif menu_input == "2":
         money = gamble(money)
     elif menu_input == "3":
-        print(f"Account Balance: {money}")
+        print("\033[92mAccount Balance: {}\033[0m".format(money))
     elif menu_input == "4":
         return
 
     else:
-        print("Enter an input between 1-4 pls")
+        print("\033[91mEnter an input between 1-4 pls\033[0m")
     if money == 0:
         return
     menu(money)
